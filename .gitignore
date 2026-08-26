@@ -1,0 +1,17 @@
+# Hugo build output — regenerated on every build, never commit
+public/
+
+# Hugo's internal cache (thumbnails, processed images, etc.)
+resources/
+
+# Hugo lock file
+.hugo_build.lock
+
+# OS junk
+.DS_Store
+Thumbs.db
+.directory
+
+# Editor/IDE folders
+.vscode/
+.idea/
