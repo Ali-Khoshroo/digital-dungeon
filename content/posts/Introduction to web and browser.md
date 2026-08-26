@@ -122,12 +122,12 @@ Most commonly this header can have 2 values :
 #### what is HTTP status code ? {#HTTP-status-code}
 HTTP response codes are represented by three digits, indicating the status of the response. Each status code represents different response category.
 
-![image](/Images/http-status-codes.jpeg)
+![image](/digital-dungeon/Images/http-status-codes.jpeg)
 
 
 #### What is HTTP request method ? {#http-request-method}
 
-![image](/Images/http_methods.jpeg)
+![image](/digital-dungeon/Images/http_methods.jpeg)
 
 The most essential ones are `GET` and `POST`. While these methods are commonly used in web interactions,other methods are optional and may serve specific purposes.
 `GET` is traditionally used to retrieve content, and `POST` is used to submit content to the
