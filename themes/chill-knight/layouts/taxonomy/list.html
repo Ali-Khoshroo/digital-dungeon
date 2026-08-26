@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="posts-section" id="tags-overview">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">BROWSE BY</p>
+      <h2>Tags</h2>
+    </div>
+  </div>
+
+  <div class="tag-cloud">
+    {{ range .Data.Terms.Alphabetical }}
+    <a class="tag-pill" href="{{ "/tags/" | relURL }}{{ .Name | urlize }}/">
+      {{ .Name }} <span class="tag-count">{{ .Count }}</span>
+    </a>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

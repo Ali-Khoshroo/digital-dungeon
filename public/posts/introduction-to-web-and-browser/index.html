@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Take a journey through HTTP, from requests and responses to headers, methods, status codes, and everything in between.">
+  <title>Digital Dungeon</title>
+
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/digital-dungeon/css/style.css">
+</head>
+
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+  <a class="brand" href="/" aria-label="Digital Dungeon home">Digital Dungeon</a>
+
+  <nav class="main-nav" aria-label="Main navigation">
+    <a class="" href="/">Home</a>
+    <a class="active" href="/posts/">Posts</a>
+    <a class="" href="/tags/">Tags</a>
+  </nav>
+</header>
+
+
+    <main>
+      
+<article class="post-single">
+  <div class="post-single-header">
+    <a class="text-link back-link" href="/posts/">&larr; back to posts</a>
+    <p class="eyebrow">AUG 26, 2026</p>
+    <h1>A Tour of HTTP</h1>
+
+    
+    <div class="tags">
+      
+      <span><a href="/tags/web-hacking-arsenal/">web hacking arsenal</a></span>
+      
+      <span><a href="/tags/http/">http</a></span>
+      
+    </div>
+    
+  </div>
+
+  <div class="post-body">
+    <p>⚠️ Spoiler Alert: in some parts we may take a little detour in our journey, getting little bit deeper in some subjects.</p>
+<h1 id="what-is-http">What is HTTP</h1>
+<p>HTTP (Hyper Text Transfer Protocol) is the protocol that runs the world wide web.At a fundamental level it is based on a <em>client-server</em> architecture.Usually the client requests content (typically via browsers) and the server/application delivers the response.
+The <strong>default</strong> port for transmitting HTTP is <strong>TCP port 80</strong>, but it can also operate over different ports.</p>
+<h3 id="some-of-http-properties">Some of HTTP properties</h3>
+<ul>
+<li>HTTP is a <strong>Stateless protocol</strong>.What does that mean? HTTP is kind of stupid, it does not have any idea about what is going on between client and server.That means that since it has no memory or knowledge about the communication between client and server , two requests don&rsquo;t have any relation to each other (to manage states such as login <strong>cookies</strong> are used).</li>
+<li>HTTP is transmitted as <strong>Plain Text</strong> over the network, it is an unencrypted protocol.This means that devices on network such as routers or proxies are able to read and modify the traffic.
+<strong>HTTPS</strong> is the solution.it encapsulates HTTP within an encryption layer , TLS/SSL (TLS is the newer, more secure version of SSL, providing enhanced encryption and integrity checks.)</li>
+<li>Since HTTP is getting transported over TCP it is reliable.(because of TCP)</li>
+</ul>
+<h3 id="communications">Communications</h3>
+<p>HTTP communications happen in two parts:</p>
+<ol>
+<li>HTTP request  (client sends this asking for a resource)</li>
+<li>HTTP response (server sends this as the response)</li>
+</ol>
+<p>Lets see an example.The following request is asking for the &ldquo;index.html&rdquo; file hosted on example.com :</p>
+<pre tabindex="0"><code>GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.
+212 Safari/537.36
+Referer: https://google.com
+</code></pre><p>Lets get into detail for what each line is:</p>
+<h3 id="get-indexhtml-http11">GET /index.html HTTP/1.1</h3>
+<p><strong>GET</strong> is an HTTP request method , used to request data from a specified resource.Here the resource is &ldquo;index.html&rdquo;.Followed by the version of the HTTP protocol, here it is <code>HTTP/1.1</code>.</p>
+<p><a href="#http-request-method">What is HTTP request method?</a></p>
+<h3 id="host">Host</h3>
+<p>Host field is telling us who are we asking for the resource(who request is being submitted to).So in this example we are asking <code>www.example.com</code>.</p>
+<h3 id="user-agent">User-Agent</h3>
+<p>It will allow web server to identify the Operating System (OS) and browser of the client making the request.This information helps websites serve content tailored to different browsers and operating systems(for example Websites often serve different layouts to mobile and desktop browsers).</p>
+<p>If you look at some HTTP requests, while using Chrome, Edge, Safari, Opera, etc.You may see that the <code>User-Agent</code> still has &ldquo;Mozilla&rdquo; in it.
+<strong>What on earth is going on? What is happening?</strong>
+Early browsers used <code>User-Agent</code> strings to identify themselves. <strong>Netscape Navigator</strong>, whose development was associated with Mozilla, became extremely popular, and websites started doing things such as:</p>
+<p>if <code>User-Agent</code> contains &ldquo;Mozilla&rdquo; : send advanced version of the website
+else : send simpler version</p>
+<p>This started to create compatibility problems for other competing browsers.So they started to include <code>Mozilla</code> , even though they weren&rsquo;t Mozilla.</p>
+<p>if you look at a request made by a Chrome browser you will see something like this :</p>
+<pre tabindex="0"><code>User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/143.0.0.0
+Safari/537.36
+</code></pre><p>When you first see that, it makes no sense.Which one are you ? Do you have some kind of identity crisis? Is Chrome all four of these? <strong>NO</strong>
+These tokens have accumulated over decades for compatibility.</p>
+<h3 id="referer">Referer</h3>
+<p>This header will tell the server the URL of the web page where the user is coming from.
+For example, if the <code>Referer</code> header shows <code>www.google.com</code>, it means that the user arrived at the current website by clicking a link on Google search.</p>
+<hr>
+<p>This HTTP request will have a response like this:</p>
+<pre tabindex="0"><code>HTTP/1.1 200 OK
+Date: Sun, 26 Nov 2023 12:00:00 GMT
+Server: Apache/2.4.41 (Unix)
+Content-Length: 450
+Content-Type: text/html; charset=UTF-8
+Connection: close
+
+&lt;html&gt;&lt;body&gt; &lt;h1&gt;Hello from example.com&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;
+</code></pre><p>Now lets get deep in this one.</p>
+<h3 id="http11-200-ok">HTTP/1.1 200 OK</h3>
+<p>This field shows that the &ldquo;HTTP 1.1&rdquo; protocol is being used and the request has been successfully processed as indicated by the HTTP status code of 200.</p>
+<p><a href="#HTTP-status-code">what is HTTP status code?</a></p>
+<h3 id="date">Date</h3>
+<p>This field shows the timestamp when the response was sent.</p>
+<h3 id="server">Server</h3>
+<p>This field shows that the server is running <code>Apache 2.4.41</code> and is hosted
+on <strong>the Unix operating system</strong>. Revealing this field can potentially help
+attackers, but it is not necessary(it optional) and can be removed or even
+replaced with a fictitious value.</p>
+<h3 id="content-length">Content-Length</h3>
+<p>This field specifies the size of the response content in bytes; in this case, it is &ldquo;450 bytes&rdquo;.</p>
+<h3 id="content-type">Content-Type</h3>
+<p>This field indicates the type of content being sent (HTML) and the character encoding being used, that is, “UTF-8”.
+Some other content types:</p>
+<pre tabindex="0"><code>Content-Type: image/png
+Content-Type: image/jpeg
+Content-Type: video/mp4
+Content-Type: application/javascript 
+Content-Type: application/pdf
+</code></pre><h3 id="connection">Connection</h3>
+<p>This field allows the sender to specify options that are desired for that connection.
+Most commonly this header can have 2 values :</p>
+<ul>
+<li>keep-alive :This directive indicates that the client wants to keep the connection open or alive after sending the response message(In HTTP 1.1 version, by default uses a persistent connection where it doesn&rsquo;t close automatically after a transaction).</li>
+<li>close :This directive indicates that the client wants to keep the connection open or alive after sending the response message(In HTTP 1.1 version, by default uses a persistent connection where it doesn&rsquo;t close automatically after a transaction).</li>
+</ul>
+<h4 id="HTTP-status-code">what is HTTP status code ?</h4>
+<p>HTTP response codes are represented by three digits, indicating the status of the response. Each status code represents different response category.</p>
+<p><img src="/Images/http-status-codes.jpeg" alt="image"></p>
+<h4 id="http-request-method">What is HTTP request method ?</h4>
+<p><img src="/Images/http_methods.jpeg" alt="image"></p>
+<p>The most essential ones are <code>GET</code> and <code>POST</code>. While these methods are commonly used in web interactions,other methods are optional and may serve specific purposes.
+<code>GET</code> is traditionally used to retrieve content, and <code>POST</code> is used to submit content to the
+server.
+However, GET can also be used to send content to the server.like this:</p>
+<pre tabindex="0"><code>GET /login.php?username=myusername&amp;password=mypassword
+HTTP/1.1
+Host: www.redseclabs.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.
+4430.212 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 34
+Connection: close
+</code></pre><p>But this will have security problems, for example:
+<code>GET</code> requests are logged in server logs, hence anyone with access to
+these logs, such as unauthorized users exploiting security vulnerabili
+ties, could see the complete URL. This becomes a concern when end-
+points inadvertently leak logs or when there’s unauthorized access to
+the logs beyond intended administrative oversight.</p>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-rule">
+    <span></span>
+    <p>that's all for now</p>
+    <span></span>
+  </div>
+  <p>made with &lt;3 and too much coffee &middot; &copy; 2026 /Ali-Khoshroo</p>
+</footer>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+baseURL = "https://Ali-Khoshroo.github.io/digital-dungeon/"
+languageCode = "en-us"
+title = "Digital Dungeon"
+theme = "chill-knight"
+
+[params]
+  description = "a personal blog about security, Linux, web technology, and what i've learned overall."
+  eyebrow = "PERSONAL BLOG / NOTES / WRITING"
+  heroTitle = "Hey, I'm Ali."
+  heroText = [
+    "Welcome to my little corner of the internet — a place for things I’m learning, building, breaking, and occasionally fixing at 2 AM.You’ll find notes on security, Linux, networking, web technology, random experiments, and whatever rabbit hole I happen to fall into next.",
+    "Just things I’ve tried, things I’ve learned, things that broke spectacularly, and hopefully a few things that might be useful to you too."
+  ]
+  handle = "Ali-Khoshroo"
+
+[taxonomies]
+  tag = "tags"
+
+[markup.goldmark.renderer]
+  unsafe = true

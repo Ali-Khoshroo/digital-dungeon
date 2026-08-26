@@ -1,0 +1,21 @@
+<article class="post">
+  <time datetime="{{ .Date.Format "2006-01-02" }}">
+    <span class="month">{{ .Date.Format "Jan" | upper }}</span>
+    <span class="day">{{ .Date.Format "02" }}</span>
+    <span class="year">{{ .Date.Format "2006" }}</span>
+  </time>
+
+  <div class="post-content">
+    <a href="{{ .RelPermalink }}">
+      <h3>{{ .Title }}</h3>
+    </a>
+    <p>{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary }}{{ end }}</p>
+    {{ with .Params.tags }}
+    <div class="tags">
+      {{ range . }}
+      <span><a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a></span>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</article>

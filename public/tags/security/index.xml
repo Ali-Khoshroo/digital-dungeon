@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Security on Digital Dungeon</title>
+		<link>http://localhost:1313/tags/security/</link>
+		<description>Recent content in Security on Digital Dungeon</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>XSS: Going Deeper</title>
+				<link>http://localhost:1313/posts/xss-going-deeper/</link>
+				<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/xss-going-deeper/</guid>
+				<description>&lt;p&gt;Most people learn XSS as &lt;code&gt;&amp;lt;script&amp;gt;alert(1)&amp;lt;/script&amp;gt;&lt;/code&gt; and stop there. The interesting part starts once that stops working.&lt;/p&gt;&#xA;&lt;h2 id=&#34;contexts-matter&#34;&gt;Contexts matter&lt;/h2&gt;&#xA;&lt;p&gt;Where your input lands changes everything: HTML body, an attribute, a JS string, a URL. Each context has its own escape sequence, and filters are usually built for one context while your input lands in another.&lt;/p&gt;&#xA;&lt;h2 id=&#34;bypassing-filters&#34;&gt;Bypassing filters&lt;/h2&gt;&#xA;&lt;p&gt;Filters that strip &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tags rarely catch event handlers, &lt;code&gt;javascript:&lt;/code&gt; URIs, or encoded payloads. This is less about clever tricks and more about understanding what the filter actually checks versus what the browser actually parses.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tags on Digital Dungeon</title>
+		<link>https://Ali-Khoshroo.github.io/digital-dungeon/tags/</link>
+		<description>Recent content in Tags on Digital Dungeon</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 26 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://Ali-Khoshroo.github.io/digital-dungeon/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Http</title>
+				<link>https://Ali-Khoshroo.github.io/digital-dungeon/tags/http/</link>
+				<pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://Ali-Khoshroo.github.io/digital-dungeon/tags/http/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Web Hacking Arsenal</title>
+				<link>https://Ali-Khoshroo.github.io/digital-dungeon/tags/web-hacking-arsenal/</link>
+				<pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://Ali-Khoshroo.github.io/digital-dungeon/tags/web-hacking-arsenal/</guid>
+				<description></description>
+			</item>
+	</channel>
+</rss>

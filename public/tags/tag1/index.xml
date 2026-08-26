@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Tag1 on Digital Dungeon</title>
+		<link>http://localhost:1313/tags/tag1/</link>
+		<description>Recent content in Tag1 on Digital Dungeon</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/tag1/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>My test</title>
+				<link>http://localhost:1313/posts/test-note/</link>
+				<pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/posts/test-note/</guid>
+				<description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/Images/chill-knight.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;lets-test-what-is-going-on&#34;&gt;lets test what is going on&lt;/h1&gt;&#xA;&lt;p&gt;i think every thing looks &lt;em&gt;good&lt;/em&gt;&#xA;lets see ==highlighing==&#xA;what about codeblock &lt;code&gt;print(fuck off)&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;lets add some stuf&#xA;lorem&#xA;epison&#xA;what ever&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

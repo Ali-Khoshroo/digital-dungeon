@@ -1,0 +1,16 @@
+{{ define "main" }}
+<section class="posts-section" id="all-writing">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">THE ARCHIVE</p>
+      <h2>{{ .Title }}</h2>
+    </div>
+  </div>
+
+  <div class="post-list">
+    {{ range .Pages.ByDate.Reverse }}
+    {{ partial "post-card.html" . }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
