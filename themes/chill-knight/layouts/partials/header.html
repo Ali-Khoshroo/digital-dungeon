@@ -1,9 +1,9 @@
 <header class="site-header">
-  <a class="brand" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }} home">{{ .Site.Title }}</a>
+  <a class="brand" href="{{ "" | relURL }}" aria-label="{{ .Site.Title }} home">{{ .Site.Title }}</a>
 
   <nav class="main-nav" aria-label="Main navigation">
-    <a class="{{ if .IsHome }}active{{ end }}" href="{{ "/" | relURL }}">Home</a>
-    <a class="{{ if eq .Section "posts" }}active{{ end }}" href="{{ "/posts/" | relURL }}">Posts</a>
-    <a class="{{ if or (eq .Section "tags") (eq .Type "taxonomy") (eq .Type "term") }}active{{ end }}" href="{{ "/tags/" | relURL }}">Tags</a>
+    <a class="{{ if .IsHome }}active{{ end }}" href="{{ "" | relURL }}">Home</a>
+    <a class="{{ if eq .Section "posts" }}active{{ end }}" href="{{ "posts/" | relURL }}">Posts</a>
+    <a class="{{ if or (eq .Section "tags") (eq .Type "taxonomy") (eq .Type "term") }}active{{ end }}" href="{{ "tags/" | relURL }}">Tags</a>
   </nav>
 </header>
