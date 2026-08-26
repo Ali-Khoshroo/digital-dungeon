@@ -9,7 +9,7 @@
 
   <div class="tag-cloud">
     {{ range .Data.Terms.Alphabetical }}
-    <a class="tag-pill" href="{{ "/tags/" | relURL }}{{ .Name | urlize }}/">
+    <a class="tag-pill" href="{{ "tags/" | relURL }}{{ .Name | urlize }}/">
       {{ .Name }} <span class="tag-count">{{ .Count }}</span>
     </a>
     {{ end }}
