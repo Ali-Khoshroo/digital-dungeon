@@ -1,14 +1,14 @@
 {{ define "main" }}
 <article class="post-single">
   <div class="post-single-header">
-    <a class="text-link back-link" href="{{ "/posts/" | relURL }}">&larr; back to posts</a>
+    <a class="text-link back-link" href="{{ "posts/" | relURL }}">&larr; back to posts</a>
     <p class="eyebrow">{{ .Date.Format "Jan 02, 2006" | upper }}</p>
     <h1>{{ .Title }}</h1>
 
     {{ with .Params.tags }}
     <div class="tags">
       {{ range . }}
-      <span><a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a></span>
+      <span><a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a></span>
       {{ end }}
     </div>
     {{ end }}
