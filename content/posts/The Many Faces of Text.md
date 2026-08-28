@@ -140,7 +140,9 @@ First let me make something clear,cause it is commonly confused by many.Base64 i
 
 Why is it called "Base 64"?
 Base64 is a binary-to-text encoding scheme that represents data in ASCII string format and then **carries that data across channels**.
+
 Base64 is considered a radix-64 representation. The encoding scheme breaks binary data into 6-bit segments, which are then mapped to one of 64 characters(we will see what are these 64 characters soon) to ensure that humans can read the printable data (2⁶ = 64 characters).
+
 This means each base64 character is 6 bits of data.
 Base64 is an encoding and decoding method that represents binary data based on 64 printable characters.
 These 64 printable characters include:
@@ -156,8 +158,10 @@ Ok! let's start with this.`1 byte` = `8 bits`
 So `3 bytes` will be `24 bits`.That is perfect for us cause `4 * 6 = 24`.Based ob this information, if the number of bytes we have is multiple of 3,we are happy as we can be.
 
 But what if that's not the case?Bye Bye base 64? NO!
+
 Here comes the "Padding".If we have any missing bit we will use padding.So we look at data `3 bytes` at a time until we have either 1 or 2 bytes left.
 Now if we have `1 byte` left, it means we will use `6 bits` of it and 2 will remain we will add 4 `0 bits` to the end of it so it becomes `6 bits`.Now we have two 6-bit groups, which give us two Base64 characters. Since we only had 1 byte of actual data, we add two `=` signs as padding(it might sound confusing but trust me it's really easy once you see an example which i will provide down below).
+
 If we have `2 bytes` left we will have `16 bits`, that we will only use `12 bits` of it , so this time `4 bits` will remain.In order to make them 6 we will clearly add 2 `0 bit` to the end of our binary and Now we have three 6-bit groups, which give us three Base64 characters but because we only had 2 bytes of actual data, we add one `=` sign as padding
 Here is an example:
 ![](/digital-dungeon/Images/base64-encoder-flow.png)
