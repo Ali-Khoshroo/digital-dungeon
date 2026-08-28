@@ -47,7 +47,7 @@ Now that we are familiar with what encoding is, Let's go back to the main topic.
 
 # URL Encoding
 
-Web browsers request pages from web servers by using URL.You have defiantly  seen one, they are something like this : `https://example.com`.
+Web browsers request pages from web servers by using URL.You have definitely  seen one, they are something like this : `https://example.com`.
 
 URLs can only be sent over the internet using ASCII characters.But most of the time URLs contain characters that are not in ASCII character set,so it has to be converted into a valid ASCII format. That's where **URL Encoding** comes in.
 URL encoding replaces any unsafe ASCII character with `%`+`hexadecimal digit`.Also URLs can not contain `space` so they are replaced by `+` or `%20`.
@@ -57,7 +57,7 @@ Here is an example, let's say we have this phrase `<hello> world` after URL enco
 
 # Double Encoding
 
-In double encoding characters are URL encoded twice.First they are encoded to a `%hex` from, then when it's going to be encoded for the second time, the encoding is applied to the `%`.
+In double encoding characters are URL encoded twice.First they are encoded to a `%hex` form, then when it's going to be encoded for the second time, the encoding is applied to the `%`.
 Some common double encoded characters:
 ```
 Character | Single  | Double
@@ -111,7 +111,7 @@ This is the basic idea behind a double-encoding bypass: **the attacker hides the
 
 # HTML Encoding
 
-In HTML, certain characters have certain meanings and if they are not handled correctly they can be dangerous.For example characters `<` and `>`can represent opening and closing of an HTML tag. We should make sure that these characters(in a URL) are  displayed and treated as a text(in textual form) rather than HTML syntax.In order to do that we need to HTML encode them.How can we do that?
+In HTML, certain characters have certain meanings and if they are not handled correctly they can be dangerous.For example characters `<` and `>`can represent opening and closing of an HTML tag. We should make sure that these characters are  displayed and treated as a text(in textual form) rather than HTML syntax.In order to do that we need to HTML encode them.How can we do that?
 
 To HTML encode a string we should replace each reserved character with its HTML entity.For example:
 ```
@@ -122,7 +122,7 @@ To HTML encode a string we should replace each reserved character with its HTML 
 ' -> &#39;
 ```
 
-The browser then renders those entities as the **original characters** on screen without treating them as tags or syntax. This one operation is the single most common defense against XSS, and it is also what lets you show code snippets, math symbols, and user comments inside a web page without breaking it.
+The browser then renders those entities as the **original characters** on screen without treating them as tags or syntax. This one operation is an important XSS defense, and it is also what lets you show code snippets, math symbols, and user comments inside a web page without breaking it.
 
 Let me give you a pointer !
 HTML entities come in two forms: named references like `&lt;` and numeric references like `&#60;` or `&#x3c;`. Both resolve to the same character.
@@ -156,10 +156,9 @@ Ok! let's start with this.`1 byte` = `8 bits`
 So `3 bytes` will be `24 bits`.That is perfect for us cause `4 * 6 = 24`.Based ob this information, if the number of bytes we have is multiple of 3,we are happy as we can be.
 
 But what if that's not the case?Bye Bye base 64? NO!
-Here comes the "Padding".If we have any missing bit we will use padding.So we look at data `3 bytes` at a time until we have ether 1 or 2 bytes left.
-Now if we have `1 byte` left, it means we will use `6 bits` of it and 2 will remain we will add 4 `0 bits` to the end of it so it becomes `6 bits`.For each `00` that we add to the end of our binary we will put one `=` sign at the end of our base 64 output(it might sound confusing but trust me it's really easy once you see an example which i will provide down below).
-If we have `2 bytes` left we will have `16 bits`, that we will only use `12 bits` of it , so this time `4 bits` will remain.In order to make them 6 we will clearly add 2 `0 bit` to the end of our binary and since we added `00`, we will add only one `=` to the end of our base 64 output.
-
+Here comes the "Padding".If we have any missing bit we will use padding.So we look at data `3 bytes` at a time until we have either 1 or 2 bytes left.
+Now if we have `1 byte` left, it means we will use `6 bits` of it and 2 will remain we will add 4 `0 bits` to the end of it so it becomes `6 bits`.Now we have two 6-bit groups, which give us two Base64 characters. Since we only had 1 byte of actual data, we add two `=` signs as padding(it might sound confusing but trust me it's really easy once you see an example which i will provide down below).
+If we have `2 bytes` left we will have `16 bits`, that we will only use `12 bits` of it , so this time `4 bits` will remain.In order to make them 6 we will clearly add 2 `0 bit` to the end of our binary and Now we have three 6-bit groups, which give us three Base64 characters but because we only had 2 bytes of actual data, we add one `=` sign as padding
 Here is an example:
 ![](/digital-dungeon/Images/base64-encoder-flow.png)
 
@@ -170,8 +169,7 @@ Here is an example:
 
 # Unicode Encoding
 
-Unicode is really just another type of character encoding.The main difference between Unicode and ASCII is that Unicode allows characters to be up to 32 bits wide. That’s over 4 billion unique values(Unicode currently has a code space of about 1.1 million possible code points).To effectively map such a large set of characters, Unicode utilizes several
-encodings such as UTF-8, UTF-16, and UTF-32.
+Unicode is a universal character standard designed to represent characters from languages and writing systems around the world. Each character is assigned a unique code point. Unicode itself is not an encoding; UTF-8, UTF-16, and UTF-32 are different ways of encoding Unicode code points.
 
 As we learned before Computers ultimately store information as numbers, and we used ASCII for communicating with the computer.But what about other languages in the world.ASCII will not work for something like Persian language.What about an emoji 😥?
 
