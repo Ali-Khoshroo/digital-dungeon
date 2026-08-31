@@ -1,5 +1,5 @@
 ---
-title: Behind the Cookie 🍪: How HTTP Remembers You
+title: "Behind the Cookie 🍪: How HTTP Remembers You"
 date: 2026-08-31
 draft: false
 description: "HTTP has no memory — so how does a website know you're logged in? Cookies are one of the answers. Let's take a look at how cookies work under the hood."
