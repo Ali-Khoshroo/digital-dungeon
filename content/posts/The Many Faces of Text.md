@@ -159,10 +159,15 @@ So `3 bytes` will be `24 bits`.That is perfect for us cause `4 * 6 = 24`.Based o
 
 But what if that's not the case?Bye Bye base 64? NO!
 
-Here comes the "Padding".If we have any missing bit we will use padding.So we look at data `3 bytes` at a time until we have either 1 or 2 bytes left.
-Now if we have `1 byte` left, it means we will use `6 bits` of it and 2 will remain we will add 4 `0 bits` to the end of it so it becomes `6 bits`.Now we have two 6-bit groups, which give us two Base64 characters. Since we only had 1 byte of actual data, we add two `=` signs as padding(it might sound confusing but trust me it's really easy once you see an example which i will provide down below).
+Here’s the thing to remember: Base64 always spits out characters in blocks of 4. Why 4? Because `4 characters × 6 bits = 24 bits = 3 bytes`, which is our “whole” unit from the start. So no matter what, every block we produce needs exactly 4 characters. If we can’t fill all 4 with real data, we fill the rest with ‘=’ signs.
 
-If we have `2 bytes` left we will have `16 bits`, that we will only use `12 bits` of it , so this time `4 bits` will remain.In order to make them 6 we will clearly add 2 `0 bit` to the end of our binary and Now we have three 6-bit groups, which give us three Base64 characters but because we only had 2 bytes of actual data, we add one `=` sign as padding
+Now let’s check both cases with this in mind.
+
+If we have 2 bytes left (16 bits), we said we split it into `6 + 6 + 4`, then pad that last 4 with two `0 bits` to make it a full 6-bit group. So now we have three 6-bit groups, which gives us three actual Base64 characters. But remember, we need 4 characters to complete the block! We only managed to produce 3, so we’re one short. That’s why we add exactly one ‘=’ to fill that last spot.
+
+If we have 1 byte left (8 bits), we split it into `6 + 2`, then pad that last 2 with four `0 bits` to make it a full 6-bit group. That gives us two 6-bit groups, so only two actual Base64 characters. Again, we need 4 to finish the block, and this time we only have 2, so we’re two short. That’s why we add ‘==’ this time.
+
+So the trick is: the ‘=’ signs aren’t really about “how many bytes we had” directly, they’re about filling the gap between however many real characters we managed to produce and the 4 we’re required to have in every block.
 Here is an example:
 ![](/digital-dungeon/Images/base64-encoder-flow.png)
 
