@@ -9,7 +9,9 @@ theme = "chill-knight"
   heroTitle = "Hey, I'm Ali."
   heroText = [
     "Welcome to my little corner of the internet — a place for things I’m learning, building, breaking, and occasionally fixing at 2 AM.You’ll find notes on security, Linux, networking, web technology, random experiments, and whatever rabbit hole I happen to fall into next.",
-    "Just things I’ve tried, things I’ve learned, things that broke spectacularly, and hopefully a few things that might be useful to you too."
+    "Just things I’ve tried, things I’ve learned, things that broke spectacularly, and hopefully a few things that might be useful to you too.",
+     "⚠️ A heads up: some posts dig into vulnerabilities and how they work. That's for learning and defense, not for causing trouble — use it responsibly and only on things you're allowed to touch.
+     The author and website owner do not endorse, encourage, or support any illegal or malicious activity."
   ]
   handle = "Ali-Khoshroo"
 
